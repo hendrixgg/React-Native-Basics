@@ -31,7 +31,7 @@ function createPerson(name, age, hasBrainDamage) {
 function HomeScreen1() {
     return (
         <SafeAreaView style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
+            <Text>Some text at the top of the screen.</Text>
             <StatusBar style="auto" />
         </SafeAreaView>
     );
@@ -49,7 +49,7 @@ function HomeScreen2() {
     const insets = useSafeAreaInsets();
     return (
         <View style={{ ...styles.container, paddingTop: insets.top }}>
-            <Text>Open up App.js to start working on your app!</Text>
+            <Text>Some text at the top of the screen.</Text>
             <StatusBar style="auto" />
         </View >
     );
@@ -65,7 +65,7 @@ function HomeScreen2() {
 function HomeScreen3() {
     return (
         <View style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
+            <Text>Some text at the top of the screen.</Text>
             <StatusBar style="auto" />
         </View >
     );
@@ -76,9 +76,10 @@ function HomeScreen3() {
 export default function App() {
     return (
         <SafeAreaProvider>
-            {/* <HomeScreen1 /> */}
+            <HomeScreen1 />
             {/* <HomeScreen2 /> */}
-            <HomeScreen3 />
+            {/* <HomeScreen3 /> */}
+            {/* Should insert a button here to swap between the three different methods. */}
         </SafeAreaProvider>
     );
 }
