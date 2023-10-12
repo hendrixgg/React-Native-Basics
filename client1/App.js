@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 /**
  * This function will accept details about a person and create an object for them.
@@ -21,8 +21,14 @@ function createPerson(name, age, hasBrainDamage) {
 
 
 // Using SafeAreaView
-import { SafeAreaView } from 'react-native-safe-area-context';
-function HomeScreen() {
+/**
+ * This is the home screen of the app.
+ * 
+ * This component must be nested under a `SafeAreaProvider` component.
+ * 
+ * @returns {SafeAreaView} `SafeAreaView` component from the react-native-safe-area-context library.
+ */
+function HomeScreen1() {
     return (
         <SafeAreaView style={styles.container}>
             <Text>Open up App.js to start working on your app!</Text>
@@ -32,21 +38,47 @@ function HomeScreen() {
 }
 
 // Using useSafeAreaInsets
-// import { useSafeAreaInsets } from 'react-native-safe-area-context';
-// function HomeScreen() {
-//     const insets = useSafeAreaInsets();
-//     return (
-//         <View style={{ ...styles.container, paddingTop: insets.top }}>
-//             <Text>Open up App.js to start working on your app!</Text>
-//             <StatusBar style="auto" />
-//         </View >
-//     );
-// }
+/**
+ * This is the home screen of the app.
+ * 
+ * This component must be nested under a `SafeAreaProvider` component.
+ * 
+ * @returns {View} Component from containing some text.
+ */
+function HomeScreen2() {
+    const insets = useSafeAreaInsets();
+    return (
+        <View style={{ ...styles.container, paddingTop: insets.top }}>
+            <Text>Open up App.js to start working on your app!</Text>
+            <StatusBar style="auto" />
+        </View >
+    );
+}
+
+// Using nothing
+/**
+ * This is the home screen of the app.
+ * 
+ * 
+ * @returns {View} Component containing some text.
+ */
+function HomeScreen3() {
+    return (
+        <View style={styles.container}>
+            <Text>Open up App.js to start working on your app!</Text>
+            <StatusBar style="auto" />
+        </View >
+    );
+}
+
+
 
 export default function App() {
     return (
         <SafeAreaProvider>
-            <HomeScreen />
+            {/* <HomeScreen1 /> */}
+            {/* <HomeScreen2 /> */}
+            <HomeScreen3 />
         </SafeAreaProvider>
     );
 }
