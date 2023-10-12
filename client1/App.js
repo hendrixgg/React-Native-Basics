@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 /**
  * This function will accept details about a person and create an object for them.
@@ -17,12 +18,36 @@ function createPerson(name, age, hasBrainDamage) {
     }
 }
 
-export default function App() {
+
+
+// Using SafeAreaView
+import { SafeAreaView } from 'react-native-safe-area-context';
+function HomeScreen() {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text>Open up App.js to start working on your app!</Text>
             <StatusBar style="auto" />
-        </View>
+        </SafeAreaView>
+    );
+}
+
+// Using useSafeAreaInsets
+// import { useSafeAreaInsets } from 'react-native-safe-area-context';
+// function HomeScreen() {
+//     const insets = useSafeAreaInsets();
+//     return (
+//         <View style={{ ...styles.container, paddingTop: insets.top }}>
+//             <Text>Open up App.js to start working on your app!</Text>
+//             <StatusBar style="auto" />
+//         </View >
+//     );
+// }
+
+export default function App() {
+    return (
+        <SafeAreaProvider>
+            <HomeScreen />
+        </SafeAreaProvider>
     );
 }
 
@@ -31,6 +56,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'top',
     },
 });
