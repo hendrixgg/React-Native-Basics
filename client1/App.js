@@ -7,7 +7,7 @@ import { StyleSheet, Text, View } from 'react-native';
  * @param {string} name The person's full name.
  * @param {number} age The person's age in years.
  * @param {boolean} hasBrainDamage Whether or not the person has brain damage.
- * @returns {Object} An object containing these three properties.
+ * @returns {{name: string, age: number, hasBrainDamage: boolean}} An object containing these three properties.
  */
 function createPerson(name, age, hasBrainDamage) {
     return {
