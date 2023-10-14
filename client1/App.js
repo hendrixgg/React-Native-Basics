@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { Appearance, useColorScheme } from 'react-native';
 
 /**
  * This function will accept details about a person and create an object for them.
@@ -18,9 +19,14 @@ function createPerson(name, age, hasBrainDamage) {
 }
 
 export default function App() {
+    let colorScheme = useColorScheme();
+
+    const themeStyleText = colorScheme == 'light' ? styles.lightThemeText : styles.darkThemeText;
+    const themeContainerStyle = colorScheme == 'light' ? styles.lightContainer : styles.darkContainer;
+
     return (
-        <View style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
+        <View style={{ ...styles.container, ...themeContainerStyle }}>
+            <Text style={{ ...styles.text, ...themeStyleText }}>{colorScheme == 'light' ? 'Light Theme Text.' : 'Dark Theme Text.'}</Text>
             <StatusBar style="auto" />
         </View>
     );
@@ -29,8 +35,23 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    lightContainer: {
+        backgroundColor: '#fff',
+    },
+    darkContainer: {
+        backgroundColor: '#000',
+    },
+    text: {
+        fontFamily: 'Futura',
+        fontSize: 30,
+    },
+    lightThemeText: {
+        color: '#000',
+    },
+    darkThemeText: {
+        color: '#fff',
     },
 });
