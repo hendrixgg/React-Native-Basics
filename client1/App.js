@@ -18,6 +18,11 @@ function createPerson(name, age, hasBrainDamage) {
     }
 }
 
+/**
+ * Sadly, I cannot change the background color of the splash screen based on the device's color scheme.
+ * 
+ * @returns Root View component to the app.
+ */
 export default function App() {
     let colorScheme = useColorScheme();
 
