@@ -1,6 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
 import BleManager from 'react-native-ble-manager';
+import { NativeAppEventEmitter } from 'react-native';
+
 /**
  * This function will accept details about a person and create an object for them.
  * 
@@ -18,6 +22,7 @@ function createPerson(name, age, hasBrainDamage) {
 }
 
 export default function App() {
+    const [bluetoothConnected, setBluetoothConnected] = useState(false);
 
     return (
         <View style={styles.container}>
